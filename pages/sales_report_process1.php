@@ -34,16 +34,15 @@ if (isset($_POST['submit'])) {
   $startDate = mysqli_real_escape_string($db, $_POST['start-date']);
   $endDate = mysqli_real_escape_string($db, $_POST['end-date']);
 
-  $sql = "SELECT td.TRANS_D_ID,t.DATE,td.PRODUCTS,td.QTY,p.BUYING_PRICE,td.PRICE ,
-          p.BUYING_PRICE * td.QTY AS Total_Buying_Price, 
-          td.PRICE * td.QTY AS Total_Selling_Price 
-          FROM transaction_details td JOIN product p ON td.PRICE=p.PRICE 
-          JOIN transaction t ON t.TRANS_D_ID=td.TRANS_D_ID
-          WHERE t.DATE BETWEEN '{$startDate}' AND '{$endDate}' 
-          ORDER BY DATE(t.DATE) DESC";
-  $results = mysqli_query($db, $sql) or die(mysqli_error($db));
-  $count = mysqli_num_rows($results);
-  $result = mysqli_fetch_assoc($results);
+  $sql =  "SELECT d.TRANS_D_ID,t.DATE,d.PRODUCTS,d.QTY,d.BUYING_PRICE,d.PRICE,
+           BUYING_PRICE * QTY AS Total_Buying_Price, PRICE * QTY AS Total_Selling_Price 
+           FROM transaction_details d JOIN transaction t ON d.TRANS_D_ID=t.TRANS_D_ID
+            WHERE t.DATE BETWEEN '{$startDate}' AND '{$endDate}' 
+            ORDER BY DATE(t.DATE) DESC";
+  $results3 = mysqli_query($db, $sql) or die(mysqli_error($db));
+  $count = mysqli_num_rows($results3);
+  
+  
   
  
 
@@ -62,7 +61,7 @@ if (isset($_POST['submit'])) {
         <div class="form-group row text-left mb-0">
           <div class="col-sm-6 mx-auto">
             <h5 class="font-weight-bold ">
-              Inventory Management System - Sales Report
+              Mwamba Cybers Inventory System - Sales Report
             </h5>
           </div>
         </div>
@@ -91,7 +90,7 @@ if (isset($_POST['submit'])) {
           <tbody>
             <?php
          
-            foreach ($results as $row) {
+            while ($row=mysqli_fetch_assoc($results3)) {
               
 
 

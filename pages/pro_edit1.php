@@ -7,9 +7,11 @@ include('../includes/connection.php');
             $pr = $_POST['price'];
             $cat = $_POST['category'];
 			$br = $_POST['buying'];
+			$stock=$_POST['stock'];
+			$onhand=$_POST['onhand'];
 		
 	 			$query = 'UPDATE product set NAME="'.$pname.'",
-					DESCRIPTION="'.$desc.'",BUYING_PRICE="'.$br.'", PRICE="'.$pr.'", CATEGORY_ID ="'.$cat.'" WHERE
+					DESCRIPTION="'.$desc.'",BUYING_PRICE="'.$br.'", PRICE="'.$pr.'",QTY_STOCK="'.$stock.'",ON_HAND="'.$onhand.'", CATEGORY_ID ="'.$cat.'" WHERE
 					PRODUCT_CODE ="'.$pc.'"';
 					$result = mysqli_query($db, $query) or die(mysqli_error($db));
 

@@ -25,12 +25,17 @@ $result = mysqli_query($db, $sql) or die ("Bad SQL: $sql");
 $opt = "<select class='form-control' name='category' required>
         <option value='' disabled selected hidden>Select Category</option>";
   while ($row = mysqli_fetch_assoc($result)) {
-    $opt .= "<option value='".$row['CATEGORY_ID']."'>".$row['CNAME']."</option>";
+    $hide = ''; // reset $hide variable to avoid to hide other rows
+    if ($row['CNAME'] == "hidden") 
+    {
+        $hide = 'style="display: none;"';
+    }
+    $opt .= "<option $hide value='".$row['CATEGORY_ID']."'>".$row['CNAME']."</option>";
   }
 
 $opt .= "</select>";
 
-  $query = 'SELECT PRODUCT_ID,PRODUCT_CODE, NAME, DESCRIPTION, QTY_STOCK,BUYING_PRICE, PRICE, c.CNAME FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID WHERE PRODUCT_ID ='.$_GET['id'];
+  $query = 'SELECT PRODUCT_ID,PRODUCT_CODE, NAME, DESCRIPTION, QTY_STOCK,ON_HAND,BUYING_PRICE, PRICE, c.CNAME FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID WHERE PRODUCT_ID ='.$_GET['id'];
   $result = mysqli_query($db, $query) or die(mysqli_error($db));
     while($row = mysqli_fetch_array($result))
     {   
@@ -41,6 +46,8 @@ $opt .= "</select>";
       $C = $row['PRICE'];
       $D = $row['CNAME'];
       $E = $row['BUYING_PRICE'];
+      $qty=$row['QTY_STOCK'];
+      $onHand=$row['ON_HAND'];
     }
       $id = $_GET['id'];
 ?>
@@ -96,7 +103,23 @@ $opt .= "</select>";
               </div>
               <div class="form-group row text-left text-warning">
                 <div class="col-sm-3" style="padding-top: 5px;">
-                 Categoty:
+                Quantity Stock:
+                </div>
+                <div class="col-sm-9">
+                  <input class="form-control" placeholder="Quantity Stock" name="stock" value="<?php echo $qty; ?>" required>
+                </div>
+              </div>
+              <div class="form-group row text-left text-warning">
+                <div class="col-sm-3" style="padding-top: 5px;">
+                Quantity On Hand:
+                </div>
+                <div class="col-sm-9">
+                  <input class="form-control" placeholder="On Hand" name="onhand" value="<?php echo $onHand; ?>" required>
+                </div>
+              </div>
+              <div class="form-group row text-left text-warning">
+                <div class="col-sm-3" style="padding-top: 5px;">
+                 Category:
                 </div>
                 <div class="col-sm-9">
                    <?php

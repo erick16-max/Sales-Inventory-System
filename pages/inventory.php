@@ -31,7 +31,7 @@ include'../includes/sidebar.php';
                <thead>
                    <tr>
                      <th>Product Code</th>
-                     <th>Name</th>
+                     <th>Product Name</th>
                      <th>Quantity</th>
                      <th>On Hand</th>
                      <th>Category</th>
@@ -42,7 +42,7 @@ include'../includes/sidebar.php';
           <tbody>
 
 <?php                  
-    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, COUNT(`QTY_STOCK`) AS "QTY_STOCK", COUNT(`ON_HAND`) AS "ON_HAND", CNAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY PRODUCT_CODE';
+    $query = 'SELECT PRODUCT_ID, PRODUCT_CODE, NAME, QTY_STOCK ,ON_HAND, CNAME, DATE_STOCK_IN FROM product p join category c on p.CATEGORY_ID=c.CATEGORY_ID GROUP BY PRODUCT_CODE';
         $result = mysqli_query($db, $query) or die (mysqli_error($db));
       
             while ($row = mysqli_fetch_assoc($result)) {

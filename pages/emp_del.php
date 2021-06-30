@@ -20,16 +20,27 @@ if ($Aa=='User'){
 <?php
   }
 }
-	if (!isset($_GET['do']) || $_GET['do'] != 1) {
+	
 						
-    	switch ($_GET['type']) {
-    		case 'employee':
-    			$query = 'DELETE FROM employee WHERE EMPLOYEE_ID = ' . $_GET['id'];
-    			$result = mysqli_query($db, $query) or die(mysqli_error($db));				
-            ?>
-    			<script type="text/javascript">alert("Employee Successfully Deleted.");window.location = "employee.php";</script>					
-            <?php
-    			//break;
-            }
-	}
+if(isset($_GET['id'])){
+	$id= $_GET['id'];
+	
+	  
+	
+	$query="DELETE FROM employee WHERE EMPLOYEE_ID=$id";
+	$results=mysqli_query($db,$query) or die (mysqli_error($db));
+	
+		
+	
+		?>
+		<script>
+		window.location="employee.php";
+		</script>
+		<?php
+}
+?>
+
+  
+	
+  
 ?>

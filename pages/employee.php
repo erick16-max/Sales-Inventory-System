@@ -61,6 +61,11 @@ if ($Aa=='User'){
                                     <i class="fas fa-fw fa-edit"></i> Edit
                                   </a>
                                 </li>
+                                <li>
+                                <a type="button" class="btn btn-danger bg-gradient-danger btn-block" style="border-radius: 0px;" href="emp_del.php?action=delete & id='.$row['EMPLOYEE_ID']. '">
+                                  <i class="fas fa-fw fa-trash"></i> Delete
+                                </a>
+                              </li>
                             </ul>
                             </div>
                           </div> </td>';

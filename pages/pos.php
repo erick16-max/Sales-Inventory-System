@@ -4,9 +4,9 @@ include'../includes/topp.php';
 // session_start();
 $product_ids = array();
 //session_destroy();
-
 //check if Add to Cart button has been submitted
 if(filter_input(INPUT_POST, 'addpos')){
+ 
     if(isset($_SESSION['pointofsale'])){
         
         //keep track of how mnay products are in the shopping cart
@@ -21,7 +21,8 @@ if(filter_input(INPUT_POST, 'addpos')){
                 'id' => filter_input(INPUT_GET, 'id'),
                 'name' => filter_input(INPUT_POST, 'name'),
                 'price' => filter_input(INPUT_POST, 'price'),
-                'quantity' => filter_input(INPUT_POST, 'quantity')
+                'quantity' => filter_input(INPUT_POST, 'quantity'),
+                'buying_price' => filter_input(INPUT_POST, 'buying_price')
             );   
         }
         else { //product already exists, increase quantity
@@ -42,7 +43,8 @@ if(filter_input(INPUT_POST, 'addpos')){
             'id' => filter_input(INPUT_GET, 'id'),
             'name' => filter_input(INPUT_POST, 'name'),
             'price' => filter_input(INPUT_POST, 'price'),
-            'quantity' => filter_input(INPUT_POST, 'quantity')
+            'quantity' => filter_input(INPUT_POST, 'quantity'),
+            'buying_price' => filter_input(INPUT_POST, 'buying_price')
         );
     }
 }
@@ -150,17 +152,36 @@ function pre_r($array){
         <tr>  
              <th width="55%">Product Name</th>  
              <th width="10%">Quantity</th>  
-             <th width="15%">Price</th>  
+             <th width="15%">Price</th> 
              <th width="15%">Total</th>  
              <th width="5%">Action</th>  
         </tr>  
-        <?php  
-
+        <?php 
+        //Stock Availability validation
+        $res=mysqli_query($db,"SELECT * FROM product") or die (mysqli_error($db));
+  while($row=mysqli_fetch_assoc($res)) {     
+ if(isset($_POST['addpos'])){
+  foreach($_SESSION['pointofsale'] as $key => $product){
+   if ($row['PRODUCT_ID']==$product['id']){
+    if($product['quantity']>$row['ON_HAND'] ) {
+      echo '<script>alert ("Ooops!! The Quantity added is more than the stock Availlable ")</script>';
+      echo '<script>window.location="pos.php"</script>';
+      unset($_SESSION['pointofsale'][$key]);
+    }
+   }
+}
+}
+  }
+ 
+ //Add Products to Cart/Point of sale
         if(!empty($_SESSION['pointofsale'])):  
             
              $total = 0;  
-        
-             foreach($_SESSION['pointofsale'] as $key => $product): 
+             
+             foreach($_SESSION['pointofsale'] as $key => $product):
+
+              echo $product['buying_price'];
+              
         ?>  
         <tr>  
           <td>
@@ -176,7 +197,13 @@ function pre_r($array){
            <td>
             <input type="hidden" name="price[]" value="<?php echo $product['price']; ?>">
             ksh <?php echo number_format($product['price']); ?>
-          </td>  
+          </td> 
+          
+          <td style="display:none;">
+            <input type="hidden" name="buying_price[]" value="<?php echo $product['buying_price']; ?>">
+            ksh <?php echo number_format($product['buying_price']); ?>
+          </td >  
+ 
 
            <td>
             <input type="hidden" name="total" value="<?php echo $product['quantity'] * $product['price']; ?>">
@@ -189,6 +216,11 @@ function pre_r($array){
         </tr>
         <?php  
                   $total = $total + ($product['quantity'] * $product['price']);
+              
+              
+            
+          
+              
              endforeach;  
         ?>
 

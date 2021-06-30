@@ -188,10 +188,17 @@ if ($Aa=='User'){
                                 $query = "SELECT NAME, PRODUCT_CODE FROM product order by PRODUCT_ID DESC LIMIT 10";
                                 $result = mysqli_query($db, $query) or die(mysqli_error($db));
                                 while ($row = mysqli_fetch_array($result)) {
-
-                                    echo "<a href='#' class='list-group-item text-gray-800'>
-                                          <i class='fa fa-tasks fa-fw'></i> $row[0]
-                                          </a>";
+                                  $hide = ''; // reset $hide variable to avoid to hide other rows
+                                  if ($row[0] == "hidden") 
+                                  {
+                                      $hide = 'style="display: none;"';
+                                  }
+                                   ?> 
+                                   
+                                   <a href='#' <?php echo $hide ?> class='list-group-item text-gray-800'>
+                                          <i class='fa fa-tasks fa-fw'></i> <?php echo $row[0] ?>
+                                          </a>
+                                          <?php
                                   }
                               ?>
                             </div>
@@ -212,9 +219,10 @@ if ($Aa=='User'){
                         <?php 
                           $query = "SELECT NAME FROM product order by PRODUCT_ID DESC LIMIT 10";
                           $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                          while ($row = mysqli_fetch_array($result)) {
-                              echo "<ul style='list-style-position: outside'>";
-                              echo "<li>$row[0]</li>";
+                          while ($row = mysqli_fetch_assoc($result)) {
+                            
+                              echo "<ul  style='list-style-position: outside'>";
+                              echo "<li>'.$row[0].'</li>";
                               echo "</ul>";
                             }
                           ?>

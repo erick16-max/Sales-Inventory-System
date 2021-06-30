@@ -21,6 +21,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -52,6 +53,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -112,6 +114,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -142,6 +145,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -172,6 +176,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -202,6 +207,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -232,6 +238,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -262,6 +269,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -292,6 +300,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -322,6 +331,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -352,6 +362,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -382,6 +393,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -412,6 +424,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>
@@ -442,6 +455,7 @@
                                               <input type="text" name="quantity" class="form-control" value="1" />
                                               <input type="hidden" name="name" value="<?php echo $product['NAME']; ?>" />
                                               <input type="hidden" name="price" value="<?php echo $product['PRICE']; ?>" />
+                                              <input type="hidden" name="buying_price" value="<?php echo $product['BUYING_PRICE']; ?>" />
                                               <input type="submit" name="addpos" style="margin-top:5px;" class="btn btn-info"
                                                      value="Add" />
                                           </div>

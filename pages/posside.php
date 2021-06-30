@@ -12,6 +12,7 @@
                   $lessvat = ($total / 1.12) * 0.12;
                   $netvat = ($total / 1.12);
                   $addvat = ($total / 1.12) * 0.12;
+                 
 
              endforeach;
 
@@ -86,7 +87,7 @@ $opt .= "</select>";
 
           </div>
 <?php endif; ?>       
-          <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#posMODAL">SUBMIT&nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+          <button name="submit" type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#posMODAL">SUBMIT&nbsp;<i class="fa fa-paper-plane" aria-hidden="true"></i></button>
 
         <!-- Modal -->
         <div class="modal fade" id="posMODAL" tabindex="-1" role="dialog" aria-labelledby="POS" aria-hidden="true">
@@ -133,4 +134,7 @@ $opt .= "</select>";
       </div> <!-- END OF CARD BODY -->
 
      </div>
+<?php
 
+
+?>

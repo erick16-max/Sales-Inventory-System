@@ -1,7 +1,6 @@
 <?php
 include'../includes/connection.php';
 session_start();
-
               $date = $_POST['date'];
              // $customer = $_POST['customer'];
               $subtotal = $_POST['subtotal'];
@@ -13,6 +12,7 @@ session_start();
               $emp = $_POST['employee'];
               $rol = $_POST['role'];
               $cash=$_POST['cash'];
+      
               $bal=$cash-$total;
               //imma make it trans uniq id
               $today = date("mdGis"); 
@@ -39,18 +39,26 @@ session_start();
                     // echo "'{$today}', '".$_POST['name'][$i-1]."', '".$_POST['quantity'][$i-1]."', '".$_POST['price'][$i-1]."', '{$emp}', '{$rol}' <br>";
 
                     $query = "INSERT INTO `transaction_details`
-                               (`ID`, `TRANS_D_ID`, `PRODUCTS`, `QTY`, `PRICE`, `EMPLOYEE`, `ROLE`)
-                               VALUES (Null, '{$today}', '".$_POST['name'][$i-1]."', '".$_POST['quantity'][$i-1]."', '".$_POST['price'][$i-1]."', '{$emp}', '{$rol}')";
+                               (`ID`, `TRANS_D_ID`, `PRODUCTS`, `QTY`, `BUYING_PRICE`, `PRICE`, `EMPLOYEE`, `ROLE`)
+                               VALUES (Null, '{$today}', '".$_POST['name'][$i-1]."', '".$_POST['quantity'][$i-1]."','".$_POST['buying_price'][$i-1]."', '".$_POST['price'][$i-1]."', '{$emp}', '{$rol}')";
 
                     mysqli_query($db,$query)or die (mysqli_error($db));
 
                     }
+                   
                     $query111 = "INSERT INTO `transaction`
                                (`TRANS_ID`, `CUST_ID`, `NUMOFITEMS`, `SUBTOTAL`, `LESSVAT`, `NETVAT`, `ADDVAT`, `GRANDTOTAL`, `CASH`, `DATE`, `TRANS_D_ID`)
                                VALUES (Null,NULL,'{$countID}','{$subtotal}','{$lessvat}','{$netvat}','{$addvat}','{$total}','{$cash}','{$date}','{$today}')";
                     mysqli_query($db,$query111)or die (mysqli_error($db));
-
-               
+                    if(isset($_SESSION['pointofsale'])){ 
+                        foreach($_SESSION['pointofsale'] as $key => $product){
+                          $product_id=$product['id'];
+                          $product_qty=$product['quantity'];
+                          
+                    $query_update_qty="UPDATE product SET ON_HAND=ON_HAND-$product_qty WHERE PRODUCT_ID=$product_id";
+                    mysqli_query($db,$query_update_qty) or die (mysqli_error($db));
+                      }
+                    }
                 break;
                   
               }

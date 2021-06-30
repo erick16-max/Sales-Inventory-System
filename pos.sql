@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2021 at 11:35 AM
+-- Generation Time: Jun 29, 2021 at 04:25 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `prince`
+-- Database: `pos`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`CATEGORY_ID`, `CNAME`) VALUES
-(12, 'Stappler'),
+(12, 'hidden'),
 (13, 'Files'),
 (14, 'Notebooks'),
 (15, 'Chalks'),
@@ -50,7 +50,8 @@ INSERT INTO `category` (`CATEGORY_ID`, `CNAME`) VALUES
 (22, 'Selotapes'),
 (23, 'Glue'),
 (24, 'Rubber'),
-(25, 'Others');
+(25, 'Others'),
+(26, 'Stappler');
 
 -- --------------------------------------------------------
 
@@ -95,9 +96,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `GENDER`, `EMAIL`, `PHONE_NUMBER`, `JOB_ID`, `HIRED_DATE`, `LOCATION_ID`) VALUES
-(1, 'Erick', 'gege', 'Male', 'erick23@gmail.com', '0720067228', 1, '0000-00-00', 113),
-(2, 'test', 'techGuy', 'Male', 'test@yahoo.com', '0720006745', 2, '2019-01-28', 156)
-
+(1, 'Erick', 'gege', 'Male', 'erick23@gmail.com', '0720067228', 1, '0000-00-00', 155),
+(7, 'Erick', 'Gege', 'Male', 'erickgege16@gmail.com', '0797296183', 2, '2021-06-28', 161);
 
 -- --------------------------------------------------------
 
@@ -135,10 +135,11 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`LOCATION_ID`, `PROVINCE`, `CITY`) VALUES
-
 (155, 'Kilifi', 'Kilifi'),
-(156, 'Kilifi', 'Mkapuni');
-
+(156, 'Kilifi', 'Mkapuni'),
+(159, 'Mombaa', 'Nyali'),
+(160, 'Kilifi', 'mkapuni'),
+(161, 'Kilifi', 'mkapuni');
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,7 @@ CREATE TABLE `manager` (
 --
 
 INSERT INTO `manager` (`FIRST_NAME`, `LAST_NAME`, `LOCATION_ID`, `EMAIL`, `PHONE_NUMBER`) VALUES
-('erick', 'Gege', 113, 'erickgege16@gmail.com', '0720067228');
+('erick', 'gege', 155, 'erickgege16@gmail.com', '0720067228');
 
 -- --------------------------------------------------------
 
@@ -186,11 +187,37 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`PRODUCT_ID`, `PRODUCT_CODE`, `NAME`, `DESCRIPTION`, `QTY_STOCK`, `ON_HAND`, `BUYING_PRICE`, `PRICE`, `CATEGORY_ID`, `SUPPLIER_ID`, `DATE_STOCK_IN`) VALUES
-(1, '2020211001', '64pgs exercise book', 'books', 1, 1, '5', 10, 19, 12, '2019-03-02'),
-(2, '20211002', '100pgs exercise book', 'book', 1, 1, '10', 20, 19, 12, '2019-03-02'),
-(3, '20211003', '200pgs exercise book', 'book', 1, 1, '30', 50, 19, 12, '2019-03-02'),
-(93, '20211004', 'staple pins', 'staple', 1, 1, '40', 60, 12, 12, '2021-06-18'),
-(94, '2021117', 'Chalk China Coloured', 'chalk', 1, 1, '100', 120, 15, 16, '2021-06-18');
+(96, 'MBC001', '1 Quire', 'One quire', 10, 0, '75', 100, 20, 12, '2021-06-17'),
+(97, 'MBC002', '2 Quire', 'Counter book', 1, 1, '130', 150, 20, 12, '2021-06-17'),
+(98, 'MBC003', '3 Quire', 'Counter book', 1, 1, '180', 220, 20, 12, '2021-06-17'),
+(99, 'MBC004', '4 Quire', 'Counter book', 1, 1, '230', 250, 20, 12, '2021-06-17'),
+(102, 'MBC005', '1 Quire', 'Cash book', 1, 1, '150', 180, 20, 12, '2021-06-18'),
+(103, 'MBC006', '2 Quire', 'Cash book', 1, 1, '220', 250, 20, 12, '2021-06-18'),
+(104, 'MBC007', '3 Quire', 'Cash book', 1, 1, '280', 320, 20, 12, '2021-06-18'),
+(105, 'MBC008', '4 Quire', 'Cash book', 1, 1, '330', 380, 20, 12, '2021-06-18'),
+(106, 'MBC009', 'Oxford Set', 'Mathematical set', 1, 0, '180', 250, 16, 12, '2021-06-18'),
+(107, 'MBC010', 'Kofa set', 'Mathematical set', 1, 0, '60', 100, 16, 12, '2021-06-18'),
+(108, 'MBC011', 'Classmate set', 'Mathematical set', 1, 1, '180', 250, 16, 12, '2021-06-18'),
+(109, 'MBC012', 'Admission book', 'Counter book', 1, 1, '180', 250, 20, 12, '2021-06-18'),
+(110, 'MBC013', 'Visitors book', 'Counter books', 1, 1, '200', 250, 20, 12, '2021-06-18'),
+(111, 'MBC014', 'Hard cover note book A5', 'Counter books', 1, 0, '45', 70, 14, 12, '2021-06-18'),
+(112, 'MBC015', 'Loose leaf pad', 'Exercise books', 1, 1, '55', 80, 14, 12, '2021-06-18'),
+(113, 'MBC016', 'Short hand note book', 'Note book', 1, 1, '35', 50, 14, 12, '2021-06-18'),
+(114, 'MBC017', 'Plastic spring file', 'Spring file', 1, 0, '40', 70, 13, 12, '2021-06-18'),
+(115, 'MBC018', 'Chalk China', 'White chalk', 1, 1, '70', 100, 15, 16, '2021-06-18'),
+(116, 'MBC019', 'Receipt books', 'Receipt book', 1, 1, '35', 50, 14, 12, '2021-06-18'),
+(117, 'MBC020', 'Office glue', 'Glue', 1, 1, '30', 50, 23, 12, '2021-06-18'),
+(118, 'MBC021', 'Stick glue', 'Glue', 1, 1, '30', 50, 23, 12, '2021-06-18'),
+(119, 'MBC022', 'Cash sale', '8Up', 1, 1, '35', 50, 14, 12, '2021-06-18'),
+(120, 'MBC023', 'Selotape', 'Selotape half inch', 1, 1, '15', 20, 22, 12, '2021-06-18'),
+(121, 'MBC024', 'Selotape', 'Selotape 3/4\"', 1, 0, '20', 25, 22, 12, '2021-06-18'),
+(122, 'MBC025', 'Mark pen', 'Pens', 1, 1, '19', 30, 21, 12, '2021-06-18'),
+(123, 'MBC026', 'Crayons china', 'Crayons', 1, 1, '25', 50, 21, 12, '2021-06-18'),
+(124, 'MBC027', 'Clear bag', 'Clear bags', 1, 1, '30', 50, 13, 12, '2021-06-18'),
+(125, 'MBC028', 'Manilla paper', 'Manilla paper', 1, 1, '13', 20, 25, 12, '2021-06-18'),
+(126, 'MBC029', 'Ruler', 'Ruler nataraj', 1, 1, '15', 30, 17, 12, '2021-06-18'),
+(128, 'MBC030', 'Visitors book', 'Visitors book kasuku', 1, 1, '200', 350, 14, 16, '2021-06-18'),
+(131, '0001', 'hidden', 'hidden', 1, 1, '1', 1, 12, 16, '2021-06-22');
 
 -- --------------------------------------------------------
 
@@ -233,6 +260,15 @@ CREATE TABLE `transaction` (
   `TRANS_D_ID` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`TRANS_ID`, `CUST_ID`, `NUMOFITEMS`, `SUBTOTAL`, `LESSVAT`, `NETVAT`, `ADDVAT`, `GRANDTOTAL`, `CASH`, `DATE`, `TRANS_D_ID`) VALUES
+(145, NULL, '1', '70', '7.50', '62.50', '7.50', '70', '100', '2021-06-29 ', '062963744'),
+(146, NULL, '1', '300', '32.14', '267.86', '32.14', '300', '1000', '2021-06-29 ', '062963828'),
+(147, NULL, '1', '25', '2.68', '22.32', '2.68', '25', '30', '2021-06-29 ', '062963855');
+
 -- --------------------------------------------------------
 
 --
@@ -244,10 +280,20 @@ CREATE TABLE `transaction_details` (
   `TRANS_D_ID` varchar(250) NOT NULL,
   `PRODUCTS` varchar(250) NOT NULL,
   `QTY` varchar(250) NOT NULL,
+  `BUYING_PRICE` varchar(250) NOT NULL,
   `PRICE` varchar(250) NOT NULL,
   `EMPLOYEE` varchar(250) NOT NULL,
   `ROLE` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction_details`
+--
+
+INSERT INTO `transaction_details` (`ID`, `TRANS_D_ID`, `PRODUCTS`, `QTY`, `BUYING_PRICE`, `PRICE`, `EMPLOYEE`, `ROLE`) VALUES
+(182, '062963744', 'Plastic spring file', '1', '40', '70', 'Erick', 'Manager'),
+(183, '062963828', '1 Quire', '3', '75', '100', 'Erick', 'Manager'),
+(184, '062963855', 'Selotape', '1', '20', '25', 'Erick', 'Manager');
 
 -- --------------------------------------------------------
 
@@ -288,7 +334,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `EMPLOYEE_ID`, `USERNAME`, `PASSWORD`, `TYPE_ID`) VALUES
 (1, 1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
-(7, 2, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 2);
+(10, 6, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 2),
+(11, 7, 'erickgege16@gmail.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 2);
 
 --
 -- Indexes for dumped tables
@@ -387,7 +434,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `CATEGORY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `CATEGORY_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -399,19 +446,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `EMPLOYEE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `EMPLOYEE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `LOCATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -423,19 +470,19 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `TRANS_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `TRANS_ID` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `transaction_details`
 --
 ALTER TABLE `transaction_details`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -462,24 +509,11 @@ ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`SUPPLIER_ID`) REFERENCES `supplier` (`SUPPLIER_ID`);
 
 --
--- Constraints for table `supplier`
---
-ALTER TABLE `supplier`
-  ADD CONSTRAINT `supplier_ibfk_1` FOREIGN KEY (`LOCATION_ID`) REFERENCES `location` (`LOCATION_ID`);
-
---
 -- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_3` FOREIGN KEY (`CUST_ID`) REFERENCES `customer` (`CUST_ID`),
   ADD CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`TRANS_D_ID`) REFERENCES `transaction_details` (`TRANS_D_ID`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_3` FOREIGN KEY (`TYPE_ID`) REFERENCES `type` (`TYPE_ID`),
-  ADD CONSTRAINT `users_ibfk_4` FOREIGN KEY (`EMPLOYEE_ID`) REFERENCES `employee` (`EMPLOYEE_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
